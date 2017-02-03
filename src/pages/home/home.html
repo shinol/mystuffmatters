@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      My Stuff Matters
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <ion-item>
+    <ion-label>Some text for qr code generate</ion-label>
+    <ion-input></ion-input>
+  </ion-item>
+  <ion-item>{{bData.text}}</ion-item>
+  <ion-item>{{bData.format}}</ion-item>
+  <ion-item>{{bData.cancelled}}</ion-item>
+
+  <ion-item>
+    <button ion-button (click)="scanIt()">Scan</button>
+  </ion-item>
+
+  <ion-item>
+    <button ion-button (click)="encodeIt()">Encode</button>
+  </ion-item>
+</ion-content>
