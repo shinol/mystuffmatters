@@ -9,18 +9,23 @@
 <ion-content padding>
 
   <ion-item>
-    <ion-label>Some text for qr code generate</ion-label>
-    <ion-input></ion-input>
+    <ion-label color="primary" stacked>QR code text</ion-label>
+    <ion-input 
+      type="text" 
+      placeholder="Box ID" 
+      [(ngModel)]="boxId"></ion-input>
   </ion-item>
-  <ion-item>{{bData.text}}</ion-item>
+  <ion-item text-wrap>{{bData.text}}</ion-item>
   <ion-item>{{bData.format}}</ion-item>
   <ion-item>{{bData.cancelled}}</ion-item>
 
-  <ion-item>
-    <button ion-button (click)="scanIt()">Scan</button>
-  </ion-item>
 
-  <ion-item>
-    <button ion-button (click)="encodeIt()">Encode</button>
-  </ion-item>
 </ion-content>
+
+<ion-footer>
+    <button ion-button (click)="scanIt()">Scan</button>
+    <button 
+      ion-button 
+      (click)="encodeIt()"
+      *ngIf="boxId != ''">Encode</button>
+</ion-footer>

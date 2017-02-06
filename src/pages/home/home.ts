@@ -6,8 +6,6 @@ import { BarcodeScanner } from 'ionic-native';
 import { QRCodePage } from '../qrcode/qrcode';
 
 
-
-
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html',
@@ -18,15 +16,14 @@ export class HomePage {
     text: "loading...",
     format: "loading..."
   };
+  boxId: string = '';
 
   constructor(public navCtrl: NavController) {
     
   }
 
   scanIt() {
-    console.log("scaning...................");
     BarcodeScanner.scan().then((barcodeData) => {
-      console.log(barcodeData);
       this.bData = barcodeData;
     }, (err) => {
       console.log(err);
@@ -34,7 +31,7 @@ export class HomePage {
   }
 
   encodeIt() {
-    this.navCtrl.push(QRCodePage);
+    this.navCtrl.push(QRCodePage, {id: this.boxId});
   }
 
 }

@@ -9,7 +9,13 @@
 <ion-content>
 
     <ion-item>
-        <qr-code [data]="'All QR Code data goes here!'" [size]="250"></qr-code>
+        <qr-code [data]="boxID" [size]="250" [type]="6"></qr-code>
     </ion-item>  
 
 </ion-content>
+
+<ion-footer>
+    <button ion-button  
+        (click)="shareIt()"> <ion-icon name="logo-facebook"></ion-icon></button>
+  
+</ion-footer>
