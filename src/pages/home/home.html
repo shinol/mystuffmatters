@@ -3,12 +3,41 @@
     <ion-title>
       My Stuff Matters
     </ion-title>
+    <ion-buttons end>
+        <button ion-button icon-only (click)="lite()">
+          <ion-icon name="sunny"></ion-icon>
+        </button>
+        <button ion-button icon-only (click)="takePhoto()">
+          <ion-icon name="camera"></ion-icon>
+        </button>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
 
-  <ion-item>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-item (click)="encodeIt()">
+          <img [src]="imageURL" alt="Image of stuff.">
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-label color="primary" floating>Image Tag</ion-label>
+          <ion-input 
+            type="text"  
+            [(ngModel)]="boxId"></ion-input>
+        </ion-item>        
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+
+  <!--<ion-item>
     <ion-label color="primary" stacked>QR code text</ion-label>
     <ion-input 
       type="text" 
@@ -17,15 +46,18 @@
   </ion-item>
   <ion-item text-wrap>{{bData.text}}</ion-item>
   <ion-item>{{bData.format}}</ion-item>
-  <ion-item>{{bData.cancelled}}</ion-item>
+  <ion-item>{{bData.cancelled}}</ion-item>-->
 
 
 </ion-content>
 
 <ion-footer>
-    <button ion-button (click)="scanIt()">Scan</button>
+    <!--<button ion-button (click)="scanIt()">Scan</button>
+    <button ion-button (click)="takePhoto()">Take Photo</button>
+    <button ion-button (click)="lite()">Toggle Lite</button>
     <button 
       ion-button 
       (click)="encodeIt()"
-      *ngIf="boxId != ''">Encode</button>
+      *ngIf="boxId != ''">Encode</button>-->
+
 </ion-footer>

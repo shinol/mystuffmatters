@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 import { NavController } from 'ionic-angular';
-import { BarcodeScanner } from 'ionic-native';
+import { BarcodeScanner, Camera, Flashlight } from 'ionic-native';
 
 import { QRCodePage } from '../qrcode/qrcode';
 
@@ -17,10 +17,9 @@ export class HomePage {
     format: "loading..."
   };
   boxId: string = '';
+  imageURL: string = '';
 
-  constructor(public navCtrl: NavController) {
-    
-  }
+  constructor(public navCtrl: NavController) {}
 
   scanIt() {
     BarcodeScanner.scan().then((barcodeData) => {
@@ -32,6 +31,27 @@ export class HomePage {
 
   encodeIt() {
     this.navCtrl.push(QRCodePage, {id: this.boxId});
+  }
+
+  takePhoto() {
+    Camera.getPicture({
+      encodingType: Camera.EncodingType.JPEG,
+      correctOrientation: true
+    })
+      .then(
+        imageData => {
+          this.imageURL = imageData;
+        }
+      )
+      .catch(
+        err => {
+          console.log(err);
+        }
+      );
+  }
+
+  lite() {
+    Flashlight.available().then(isAvailable => Flashlight.toggle());
   }
 
 }

@@ -21,7 +21,7 @@ export class QRCodePage {
             Screenshot.URI(80)
                 .then((res) => {
                     console.log(res);
-                    SocialSharing.share(null, res.URI, null)
+                    SocialSharing.share(null, null, res.URI, null)
                     .then(() => {},
                         () => {
                         alert('SocialSharing failed');
